@@ -25,13 +25,13 @@ class ServicioAdmin(admin.ModelAdmin):
 
 @admin.register(Reserva)
 class ReservaAdmin(admin.ModelAdmin):
-    list_display = ('id','cliente','estado','fecha_reserva')
+    list_display = ('id','cliente','estado','fecha_reserva','fecha_inicio','fecha_termino')
     search_fields = ['cliente','estado','fecha_reserva']
 
 @admin.register(DetalleReserva)
 class DetalleReservaAdmin(admin.ModelAdmin):
-    list_display = ('reserva','servicio','fecha_inicio','fecha_termino','cantidad_personas')
-    search_fields = ['reserva','servicio','fecha_inicio','fecha_termino','cantidad_personas']
+    list_display = ('reserva','servicio','cantidad_personas')
+    search_fields = ['reserva','servicio','cantidad_personas']
 
 @admin.register(TipoPago)
 class TipoPagoAdmin(admin.ModelAdmin):

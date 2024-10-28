@@ -1,22 +1,23 @@
+from datetime import date, datetime
 from django.db import models
 
 # Create your models here.
 
 class TipoCliente(models.Model):
     nombre=models.CharField(max_length=50)
-    codigo=models.CharField(max_length=5)
+    codigo=models.CharField(max_length=5, unique=True)
     descuento=models.IntegerField()#valor en porcentaje
 
     def __str__(self):
         return self.codigo
 
 class Cliente(models.Model):    
-    rut=models.CharField(max_length=10)
+    rut=models.CharField(max_length=10, unique=True)
     nombres = models.CharField(max_length=50)
     apellidos = models.CharField(max_length=50)
-    telefono = models.IntegerField()
+    telefono = models.CharField(max_length=8)
     email = models.EmailField()
-    tipo_cliente = models.ForeignKey(TipoCliente, on_delete=models.CASCADE)
+    tipo_cliente = models.ForeignKey(TipoCliente, on_delete=models.CASCADE, default=1)
 
     def __str__(self):
         return f"{self.nombres} {self.apellidos} ({self.rut}) ({self.tipo_cliente})"
@@ -29,7 +30,8 @@ class TipoServicio(models.Model):
 
     def __str__(self):
         return f"{self.nombre} ({self.capacidad})"
-    
+
+
 
 class Servicio(models.Model):
     nombre = models.CharField(max_length=100)
@@ -46,8 +48,15 @@ class Reserva(models.Model):
                       ('F','Finalizada'),
                       ]
     fecha_reserva = models.DateTimeField(auto_now=True)
+    fecha_inicio = models.DateTimeField()
+    fecha_termino = models.DateTimeField()
     estado = models.CharField(max_length=30, choices=ESTADO_CHOICES)
     cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
+
+    def save(self, *args, **kwargs):
+        self.fecha_inicio = self.fecha_inicio.replace(hour=15, minute=0, second=0)
+        self.fecha_termino = self.fecha_termino.replace(hour=12, minute=0, second=0)
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return f"{self.cliente.rut} ({self.estado})"
@@ -55,12 +64,10 @@ class Reserva(models.Model):
 class DetalleReserva(models.Model):
     reserva = models.ForeignKey(Reserva, on_delete=models.CASCADE)
     servicio = models.ForeignKey(Servicio, on_delete=models.CASCADE)
-    fecha_inicio = models.DateTimeField()
-    fecha_termino = models.DateTimeField()
     cantidad_personas = models.IntegerField()
 
     def __str__(self):
-        return f"{self.reserva} ({self.fecha_inicio} - {self.fecha_termino})"
+        return f"{self.reserva} ()"
 
 class TipoPago(models.Model):
     nombre=models.CharField(max_length=50)
