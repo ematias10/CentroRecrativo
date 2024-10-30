@@ -1,5 +1,6 @@
-<!DOCTYPE html>
 
+{% load static %}
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
@@ -12,9 +13,18 @@
     <body>
         <h1>Reserva</h1>
         <div>
+            <input type="datetime" name="" id="fechas">
+            <button type="button" id="confirmar">buscar</button>
             {% for r in reservas  %}
             <p>{{r}}</p>
             {% endfor %}
         </div>
+                <div id="disponibles">
+                    
+                </div>
+        <script type="module" src="{% static 'js/obtenerReservas.js' %}"></script>
+        <script type="module" src="{% static 'js/carrito.js' %}"></script>
     </body>
+    
 </html>
+
