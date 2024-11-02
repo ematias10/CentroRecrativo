@@ -22,10 +22,15 @@ class ListaClientes(viewsets.ModelViewSet):
     lookup_field = 'rut'
 
 
+class ListaServicios(viewsets.ModelViewSet):
+    serializer_class = ServicioSerializer
+    queryset = Servicio.objects.all()
+    
+
+
 class ListaClientesView(generics.ListAPIView):
     serializer_class = ListaClientesSerializer
     queryset = Cliente.objects.all()
-
 
 
 class DatosClienteView(generics.ListAPIView):
