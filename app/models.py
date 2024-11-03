@@ -31,8 +31,6 @@ class TipoServicio(models.Model):
     def __str__(self):
         return f"{self.nombre} ({self.capacidad})"
 
-
-
 class Servicio(models.Model):
     nombre = models.CharField(max_length=100)
     descripcion = models.TextField()
@@ -52,6 +50,8 @@ class Reserva(models.Model):
     fecha_termino = models.DateTimeField()
     estado = models.CharField(max_length=30, choices=ESTADO_CHOICES)
     cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
+    telefono = models.CharField(max_length=8)
+    email = models.EmailField()
 
     def save(self, *args, **kwargs):
         self.fecha_inicio = self.fecha_inicio.replace(hour=15, minute=0, second=0)

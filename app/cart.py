@@ -1,13 +1,20 @@
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
+from .models import Servicio, TipoServicio
 
 from datetime import date, datetime
+def obtenerPrecioServicio(servicio_id):
+    servicio = Servicio.objects.get(id=servicio_id)
+    return servicio.tipo_servicio.precio
 
 def diasEntreFechas(fecha1, fecha2):
     fecha1 = datetime.strptime(fecha1, "%Y-%m-%d")
     fecha2 = datetime.strptime(fecha2, "%Y-%m-%d")
     return abs((fecha2 - fecha1).days)
+
+def precioTotal(dias,precio):
+    return dias*precio;
 
 def obtenerCarrito(request):
     carrito = request.session.get('carrito',{})
@@ -33,6 +40,8 @@ def agregarAlCarrito(request):
             'fecha_fin': fecha_fin,
             'cantidad_personas': cantidad_personas,
             'dias':diasEntreFechas(fecha_fin, fecha_inicio),
+            'precio': obtenerPrecioServicio(servicio_id),
+            'precio_total_dias':precioTotal(diasEntreFechas(fecha_fin, fecha_inicio),obtenerPrecioServicio(servicio_id))
         }
 
         guardarCarrito(request, carrito)
@@ -41,13 +50,12 @@ def agregarAlCarrito(request):
     
     else:
         return JsonResponse({"message":"Metodo no permitido"}, status=405)
-    
+
 def verCarrito(request):
     carrito = obtenerCarrito(request)
     return JsonResponse(carrito)
 
 def eliminarDelCarrito(request, servicio_id):
-    
     carrito = obtenerCarrito(request)
 
     if str(servicio_id) in carrito:

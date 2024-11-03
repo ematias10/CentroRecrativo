@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Home Centro Recreativo</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+    <h1>Confirmar Reserva</h1>
+    <input type="text" id="rut">
+    <input type="button" value="" id="buscar">
+
+    
+    <div id ="listado_reservas">
+    </div>
+    <script type="module" src="{% static 'js/confirmarReserva.js' %}"></script>
+</body>
+
+</html>

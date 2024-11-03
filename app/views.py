@@ -15,3 +15,8 @@ def reserva(request):
                }
 
     return render(request, "app/reserva.html", context)
+
+
+def confirmar_reserva(request):
+    context = {}
+    return render(request,"app/confirmar_reserva.html", context)

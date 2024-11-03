@@ -15,4 +15,5 @@ urlpatterns = [
     ####
     path("home/", views.home, name="home"),
     path("reserva/",views.reserva,name="reserva"),
+    path("confirmar_reserva/",views.confirmar_reserva,name="confirmar_reserva"),
     ]
