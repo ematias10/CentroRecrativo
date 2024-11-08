@@ -45,7 +45,7 @@ def agregarAlCarrito(request):
         }
 
         guardarCarrito(request, carrito)
-
+        cantidadElementosCarrito(request)
         return JsonResponse({"message":"Se agrego el servicio al carrito"})
     
     else:
@@ -65,3 +65,7 @@ def eliminarDelCarrito(request, servicio_id):
     guardarCarrito(request, carrito)
     
     return JsonResponse({"message": "Cabaña eliminada del carrito"})
+
+def cantidadElementosCarrito(request):
+    carrito = obtenerCarrito(request)
+    print(len(carrito))

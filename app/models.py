@@ -76,7 +76,6 @@ class TipoPago(models.Model):
     def __str__(self):
         return f"{self.nombre} ({self.codigo})"
 
-
 class Pago(models.Model):
     ESTADO_CHOICES = [('PP','Pago Pendiente'),
                       ('AB','Abonado'),
@@ -92,3 +91,13 @@ class Pago(models.Model):
 
     def __str__(self):
         return f"{self.reserva} ({self.estado})"
+
+class TipoClientePago(models.Model):
+    tipo_cliente = models.ForeignKey(TipoCliente, on_delete=models.CASCADE)
+    tipo_pago = models.ForeignKey(TipoPago, on_delete=models.CASCADE)
+
+    class Meta:
+        unique_together = ('tipo_cliente','tipo_pago')
+
+    def __str__(self):
+        return f"{self.tipo_cliente} - {self.tipo_pago}"

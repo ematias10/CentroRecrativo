@@ -7,14 +7,15 @@ from django.core.files import File
 import base64
 from django import core
 
-class TpoClienteSerializer(serializers.ModelSerializer):
+
+class TipoClienteSerializer(serializers.ModelSerializer):
     class Meta:
         model = TipoCliente
         fields = ['codigo','nombre','descuento']
 
 class ListaClientesSerializer(serializers.ModelSerializer):
     #para mostrar el objeto completo con sus datos con GET
-    tipo_cliente = TpoClienteSerializer(read_only = True)
+    tipo_cliente = TipoClienteSerializer(read_only = True)
     #recibir el id en caso de POST
     tipo_cliente_codigo = serializers.SlugRelatedField(queryset=TipoCliente.objects.all(),
                                                          slug_field='codigo',  # Usar 'codigo' como el identificador en lugar de 'id'
@@ -25,7 +26,13 @@ class ListaClientesSerializer(serializers.ModelSerializer):
         # fields = ['rut','nombres','apellidos','telefono','email','tipo_cliente']'
         fields = '__all__'
 
+class TipoServicioSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TipoServicio
+        fields = '__all__'
+
 class ServicioSerializer(serializers.ModelSerializer):
+    tipo_servicio = TipoServicioSerializer(read_only=True)
     class Meta:
         model = Servicio
         fields = '__all__'

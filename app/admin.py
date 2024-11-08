@@ -42,3 +42,8 @@ class TipoPagoAdmin(admin.ModelAdmin):
 class PagoAdmin(admin.ModelAdmin):
     list_display = ('reserva','total','tipo_pago','estado')
     search_fields = ['reserva','total','tipo_pago','estado'] 
+
+@admin.register(TipoClientePago)
+class TipoClientePagoAdmin(admin.ModelAdmin):
+    list_display = ('tipo_cliente','tipo_pago')
+    search_fields = ['tipo_cliente','tipo_pago']
