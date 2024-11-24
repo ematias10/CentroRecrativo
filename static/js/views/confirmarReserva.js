@@ -128,11 +128,13 @@ btn_buscar.addEventListener("click",()=>{
     const result = document.getElementById('result');
 
     if (validarRut(rutInput)) {
+        result.style.visibility = 'visible';
         result.textContent = 'RUT válido ✅';
         result.style.color = 'green';
         const rut = limpiarRut(rutInput)
         mostrar_datos(rut);
       } else {
+        result.style.visibility = 'visible';
         result.textContent = 'RUT inválido ❌';
         result.style.color = 'red';
       }

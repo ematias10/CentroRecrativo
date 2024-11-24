@@ -15,19 +15,26 @@
         </div>
     </div>
     <div class="form-container">
-            <div>
-                <input type="text" id="rut">
-                <input type="button" value="" id="buscar">
-                <p id="result"></p>
+            <h1>Ingrese sus datos</h1>
+            <div class="formHead">
+                <div class="input-container">
+                    <!-- <label for="rut">Ingrese su RUT</label> -->
+                    <input type="text" id="rut" placeholder="Ingrese su RUT">
+                    <button id="buscar">Confirmar</button>
+                </div>
+                
+                <p id="result" class="result">revisando rut...</p>
             </div>
             <div id="formContainer" class="collapsed">
-                <input type="hidden" id="rut2">
-                <input type="text" id="nombres" class="form-input">
-                <input type="text" id="apellidos" class="form-input">
-                <input type="text" id="telefono" maxlength="8" class="form-input">
-                <input type="email" id="correo" class="form-input">
+                <div class="formDiv">
+                    <input type="hidden" id="rut2">
+                    <input type="text" id="nombres" class="form-input">
+                    <input type="text" id="apellidos" class="form-input">
+                    <input type="text" id="telefono" maxlength="8" class="form-input">
+                    <input type="email" id="correo" class="form-input">
 
-                <button type="submit">Enviar</button>
+                    <button type="submit">Enviar</button>
+                </div>
             </div>
     </div>
 </div>
