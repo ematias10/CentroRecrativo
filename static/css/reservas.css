@@ -1,27 +1,70 @@
 .contenedor-fechas{
-    width: 90%;
-    background-color: red;
-    margin: auto;
-    border-radius: 2em;
-    display: grid;
+    width: 100%;
+    background-color: var(--color4);
+    /* border-radius: 2em; */
+    display: flex;
     gap: 6px;
+    margin: 14px 0px 0px 0px;
+    /* padding: 12px 0 12px 0; */
+    height: 62px;
+    justify-content: space-between;
     
+
+    a{
+        width: 20%;
+        text-overflow: clip;
+        height: 100%;
+        background-color: var(--color5);
+        font-size: 2.2vw;
+        text-align: center;
+        align-content: center;
+        text-decoration: none;
+        color: white;
+    }
+    a:hover{
+        background-color: var(--color3);
+        color: black;
+        transition: 0.5s;
+    }
+}
+
+.datepicker-container{
+    display: flex;
+    margin: auto;
+    width: 60%;
+    justify-content: center;
 }
 
 #fechas{
-    border-radius: 1em;
-    padding: auto;
+    border-radius: 1em 0 0em 0;
+    /* margin: auto; */
+    width: 70%;
+    justify-items: center;
+    height: 40px;
+    border: 0;
+}
+#confirmar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 15%;
+    border-radius: 0em 0 1em 0;
 }
 
 .cards{
-    width: 100%;
+    width: 94%;
+    margin: auto;
+    display: grid;
+    gap: 1rem;
+    grid-auto-rows: 16rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 34rem), 1fr));
 }
 
 .card-container{
     display:flex;
     height: 250px;
-    background-color: rgb(23, 0, 128);
-    width: 90%;
+    background-color: var(--color5);
+    width: 100%;
     margin: auto;
     border-radius: 12px;
     margin-top: 1em;
@@ -29,7 +72,7 @@
 }
 
 .card-image{
-    background-color: rgb(23, 0, 128);
+    background-color: var(--color5);
     height: 100%;
     min-width: 125px;
 }
@@ -58,7 +101,12 @@
     font-size: x-large;
     font-weight: 300;
     color: whitesmoke;
+
+    span{
+        font-size: 0.5em;
+    }
 }
+
 
 .card-data-description{
     font-size: large;

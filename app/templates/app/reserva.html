@@ -1,31 +1,39 @@
-{% load static %}
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Home Centro Recreativo</title>
-    <meta name="description" content="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="" />
-
-
-</head>
-
-<body>
-    <h1>Reserva</h1>
-    <div>
-        <input type="datetime" name="" id="fechas" />
-        <button type="button" id="confirmar">buscar</button>
-        {% for r in reservas %}
-        <p>{{r}}</p>
-        {% endfor %}
+{% extends 'app/base.html' %}
+{% load static from static %}
+{% block titulo %}Bienvenido al Centro Recreativo Las Cascadas{% endblock titulo %}
+{% block estilos %}
+<link href="{% static 'css/reservas.css' %}" rel="stylesheet" />
+<!-- Flatpickr -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/es.js"></script>
+{% endblock estilos %}
+{% block body %}
+<div class="contenedor-fechas">
+    <a href="{% url 'confirmar_reserva' %}">Carrito</a>
+    <div class="datepicker-container"> 
+        <input type="datetime" name="" id="fechas" readonly value="Ingrese las fechas para ver disponibilidad" />
+        <button type="button" id="confirmar" class="btn btn-light">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2" />
+                <line x1="16" y1="16" x2="21" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            </svg>
+        </button>
     </div>
-    <div id="disponibles"></div>
-    <div id="listado_reservas"></div>
-    <script type="module" src="{% static 'js/obtenerReservas.js' %}"></script>
-    <script type="module" src="{% static 'js/carrito.js' %}"></script>
-</body>
 
-</html>
+    <a href="{% url 'confirmar_reserva' %}">Continuar</a>
+</div>
+<div class="cards" id="cards">
+</div>
+<div class="my-spinner spinner-border text-primary" id='loading' role="status" hidden>
+    <span class="visually-hidden">Loading...</span>
+  </div>
+
+<div id="disponibles"></div>
+<div id="listado_reservas"></div>
+{% endblock body %}
+
+{% block scripts %}
+<script type="module" src="{% static 'js/views/reservas.js' %}"></script>
+<script type="module" src="{% static 'js/carrito.js' %}"></script>
+{% endblock scripts %}

@@ -1,0 +1,56 @@
+.principal{
+    position: relative;
+    text-align: center;
+    color: white;
+    background-image: url('/static/img/fondo.jpg');
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: center center;
+    background-size: cover;
+    z-index: 1;
+    padding: 20rem 0 14rem 0;
+}
+
+.principal-container{
+max-width: 1320px;
+margin: auto;
+}
+
+.principal-title{
+    font-size: 4.5rem;
+    font-weight: 700;
+    line-height: 4.5rem;
+    margin-bottom: 4rem;
+}
+
+.servicio-card{
+    position: relative;
+    border: 0;
+    border-radius: 0;
+    border-left: 3px solid var(--color4);
+    transition: color 0.8s ease; /* Transición del color del texto */
+    color: black;
+    overflow: hidden; /* Asegura que ::before no se desborde */
+    background-color: rgba(165, 165, 165, 0.081);
+}
+
+.servicio-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: var(--color4);
+    transition: width 0.8s ease; /* Controla la animación de expansión */
+    z-index: -1; /* Coloca el fondo detrás del contenido */
+  }
+  
+  .servicio-card:hover {
+    color: white; /* Cambia el color del texto al hacer hover */
+    
+  }
+  
+  .servicio-card:hover::before {
+    width: 100%; /* Expande el fondo hasta cubrir el div completo */
+  }

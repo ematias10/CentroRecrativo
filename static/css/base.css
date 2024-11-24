@@ -1,8 +1,72 @@
+:root{
+    --color1: #80EE98;
+    --color2: #46DFB1;
+    --color3: #09D1C7;
+    --color4: #15919B;
+    --color5: #0C6478;
+    --color6: #213A58;
+    --color7: #E7F5DC;
+}
+
+
+
 nav{
-    background-color: #0055b7;
+    background-color: var(--color4);
     color: #f3f3f3;
 }
 
-.navbar-nav {
-    color: red;
+.navbar-logo{
+    height: 40px; /* Ajusta este valor según el tamaño del navbar */
+    width: auto; /* Mantiene la proporción */
+    max-height: 100%; /* Evita que exceda el tamaño del navbar */
+    filter: invert(100%) brightness(2);
+  }
+
+a.nav-link {
+    color: white;
+}
+
+
+.section{
+    padding: 5rem 0;
+}
+
+.section-container{
+    max-width: 1400px;
+}
+
+.section-h2{
+    font-size: 2.5rem;
+    text-align: center;
+}
+.section-h5{
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.section-grid-container{
+    width: 90%;
+    display: grid;
+    /* grid-auto-rows: 14rem; */
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+    margin: 1rem auto;
+    gap: 1rem;
+    justify-items: center;
+}
+
+.section-flex-container{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: stretch;
+    justify-content: space-evenly;
+}
+
+.my-spinner{
+    display: flex;
+    margin: 3rem auto;
+    --bs-spinner-width: 4rem;
+    --bs-spinner-height: 4rem;
+    --bs-spinner-border-width: 0.4rem;
 }

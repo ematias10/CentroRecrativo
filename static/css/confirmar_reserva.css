@@ -1,0 +1,24 @@
+.confirmar-container{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#formContainer {
+    display: grid;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 3s ease; /* Animación del cambio de altura */
+}
+  
+#formContainer.expanded {
+    max-height: 300px; /* Ajusta según el tamaño del formulario */
+}
+
+@media (max-width: 800px) {
+  .confirmar-container{
+    flex-direction: column;
+
+  }
+}

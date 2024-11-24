@@ -4,7 +4,7 @@ function getCookie(name) {
         const cookies = document.cookie.split(';');
         for (let i = 0; i < cookies.length; i++) {
             const cookie = cookies[i].trim();
-            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+            if (cookie.startsWith(name + '=')) {
                 cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
                 break;
             }
@@ -14,10 +14,13 @@ function getCookie(name) {
 }
 
 
+
 export const agregarAlCarrito = (servicio_id, fecha_inicio, fecha_fin, cantidad_personas) => {
     const csrftoken = getCookie('csrftoken');
-    const url = "/app/cart/agregar-al-carrito/";
-
+    
+    // const url = "/app/cart/agregar-al-carrito/";
+    const BASE_URL = window.location.origin;
+    const url = `${BASE_URL}/app/cart/agregar-al-carrito/`;
     fetch(url, {
         method: 'POST',
         headers: {
@@ -33,7 +36,7 @@ export const agregarAlCarrito = (servicio_id, fecha_inicio, fecha_fin, cantidad_
     })
     .then(response => response.json())
     .then(data => {
-        alert(data.message);
+        // alert(data.message);
     });
 
 }

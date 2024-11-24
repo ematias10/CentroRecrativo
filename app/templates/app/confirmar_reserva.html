@@ -1,25 +1,50 @@
-{% load static %}
-<!DOCTYPE html>
-<html>
+{% extends 'app/base.html' %}
+{% load static from static %}
+{% block titulo %}Bienvenido al Centro Recreativo Las Cascadas{% endblock titulo %}
+{% block estilos %}
+<link href="{% static 'css/confirmar_reserva.css' %}" rel="stylesheet" />
+<!-- Flatpickr -->
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Home Centro Recreativo</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="">
-</head>
+{% endblock estilos %}
+{% block body %}
+<h1>Confirmar Reserva</h1>
 
-<body>
-    <h1>Confirmar Reserva</h1>
-    <input type="text" id="rut">
-    <input type="button" value="" id="buscar">
-
-    
-    <div id ="listado_reservas">
+<div class="confirmar-container">
+    <div class="tabla-container" id="tabla-container">
+        <div id ="listado_reservas">
+        </div>
     </div>
-    <script type="module" src="{% static 'js/confirmarReserva.js' %}"></script>
-</body>
+    <div class="form-container">
+            <div>
+                <input type="text" id="rut">
+                <input type="button" value="" id="buscar">
+                <p id="result"></p>
+            </div>
+            <div id="formContainer" class="collapsed">
+                <input type="hidden" id="rut2">
+                <input type="text" id="nombres" class="form-input">
+                <input type="text" id="apellidos" class="form-input">
+                <input type="text" id="telefono" maxlength="8" class="form-input">
+                <input type="email" id="correo" class="form-input">
 
-</html>
+                <button type="submit">Enviar</button>
+            </div>
+    </div>
+</div>
+
+
+
+
+
+{% endblock body %}
+
+{% block scripts %}
+
+<script type="module" src="{% static 'js/views/confirmarReserva.js' %}"></script>
+<script type="module" src="{% static 'js/carrito.js' %}"></script>
+{% endblock scripts %}
+
+
+
+
+

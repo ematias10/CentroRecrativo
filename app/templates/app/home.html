@@ -1,11 +1,92 @@
 {% extends 'app/base.html' %}
 {% load static from static %}
 {% block titulo %}Bienvenido al Centro Recreativo Las Cascadas{% endblock titulo %}
-{% block estilos %}{% endblock estilos %}
+{% block estilos %}
+    <link href="{% static 'css/home.css' %}" rel="stylesheet" />
+    <!-- Flatpickr -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/es.js"></script>
+{% endblock estilos %}
 {% block body %}
+<!-- wall -->
+<header class="principal">
+    <div class="principal-container">
+        <div class="principal-title">Centro Recreativo</div>
+    </div>
+</header>
 
-<h1>Sistema de reservas</h1>
-<a href="{% url 'reserva' %}">ir a reservas</a>
+<!--  -->
+<section class="section">
+    <h2 class="section-h2 text-uppercase">Servicios disponibles</h2>
+    <h5 class="section-h5">En nuestro centro recreativo tenemos a disposicion</h5>
+    <div class="section-grid-container">
+        <div class="servicio-card card" style="width: 18rem;">
+            <img src="{% static 'img/cabana.jpg' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Cabañas</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="{% url 'reserva' %}" class="btn btn-primary">Reservar</a>
+            </div>
+          </div>
+          <div class="servicio-card card" style="width: 18rem;">
+            <img src="{% static 'img/centro-eventos.jpg' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Centro de eventos</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="{% url 'reserva' %}" class="btn btn-primary">Reservar</a>
+            </div>
+          </div>
+          <div class="servicio-card card" style="width: 18rem;">
+            <img src="{% static 'img/camping.jpg' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Picnic y camping</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-primary">Reservar</a>
+            </div>
+          </div>
+    </div>
+
+
+</section>
+
+<section class="section" style="background-color: rgb(198, 198, 198);">
+<h2 class="section-h2" >Puedes disfrutar</h2>
+<div class="section-flex-container">
+    <div class="card mb-3" style="max-width: 1040px; margin-inline: 2rem;">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img src="{% static 'img/camping.jpg' %}" class="img-fluid rounded-start" alt="...">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card mb-3" style="max-width: 1040px; margin-inline: 2rem;">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img src="{% static 'img/camping.jpg' %}" class="img-fluid rounded-start" alt="...">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+
+</section>
+
+<footer style="background-color: rgb(12, 12, 124); height: 100px;">
+
+</footer>
 {% endblock body %}
-
-{% block scripts %}{% endblock scripts %}
+{% block scripts %} {% endblock scripts %}

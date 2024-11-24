@@ -14,7 +14,7 @@ def reserva(request):
                'reservas': reservas,
                }
 
-    return render(request, "app/new_reserva.html", context)
+    return render(request, "app/reserva.html", context)
 
 
 def confirmar_reserva(request):

@@ -21,6 +21,21 @@ class ListaClientes(viewsets.ModelViewSet):
     queryset = Cliente.objects.all()
     lookup_field = 'rut'
 
+    def retrieve(self, request, *args, **kwargs):
+        rut = kwargs.get('rut')
+        try:
+            cliente = self.get_queryset().get(rut=rut)
+            serializer = self.get_serializer(cliente)
+            return Response({
+                'encontrado': True,
+                'data': serializer.data
+            }, status=status.HTTP_200_OK)
+        except Cliente.DoesNotExist:
+            return Response({
+                'encontrado':False,
+                'data':None,
+                },status=status.HTTP_200_OK)
+        
 
 class ListaServicios(viewsets.ModelViewSet):
     serializer_class = ServicioSerializer
