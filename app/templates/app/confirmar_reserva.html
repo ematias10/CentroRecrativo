@@ -4,16 +4,97 @@
 {% block estilos %}
 <link href="{% static 'css/confirmar_reserva.css' %}" rel="stylesheet" />
 <!-- Flatpickr -->
+<style>
 
+
+
+
+    .total-pagar {
+        text-align: right;
+        font-weight: bold;
+        font-size: 18px;
+        margin-top: 20px;
+    }
+</style>
 {% endblock estilos %}
 {% block body %}
 <h1>Confirmar Reserva</h1>
 
 <div class="confirmar-container">
-    <div class="tabla-container" id="tabla-container">
+    <div class="reservas-container">
+        <h1>Resumen de la reserva</h1>
+        <div class="reservas" id="reservas">
+            <div class="card-reserva">
+                <h3>Nombre cabaña</h3>
+                <div class="datos-reserva">
+                    <div class="dato-reserva">
+                        <span class="descripcion">Fecha ingreso</span>
+                        <span class="valor">01/02/2023</span>
+                    </div>
+                    <div class="dato-reserva">
+                        <span class="descripcion">Fecha salida</span>
+                        <span class="valor">03/02/2023</span>
+                    </div>
+                    <div class="dato-reserva">
+                        <span class="descripcion">Cantidad días</span>
+                        <span class="valor">2</span>
+                    </div>
+                    <div class="dato-reserva">
+                        <span class="descripcion">Cantidad personas</span>
+                        <span class="valor">3</span>
+                    </div>
+                    <div class="dato-reserva">
+                        <span class="descripcion">Valor diario</span>
+                        <span class="valor">$10.000</span>
+                    </div>
+                    <div class="dato-reserva">
+                        <span class="descripcion">Valor total</span>
+                        <span class="valor">$20.000</span>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="card-reserva">
+                <h3>Nombre cabaña 2</h3>
+                <div class="datos-reserva">
+                    <div class="dato-reserva">
+                        <span class="descripcion">Fecha ingreso</span>
+                        <span class="valor">05/02/2023</span>
+                    </div>
+                    <div class="dato-reserva">
+                        <span class="descripcion">Fecha salida</span>
+                        <span class="valor">07/02/2023</span>
+                    </div>
+                    <div class="dato-reserva">
+                        <span class="descripcion">Cantidad días</span>
+                        <span class="valor">2</span>
+                    </div>
+                    <div class="dato-reserva">
+                        <span class="descripcion">Cantidad personas</span>
+                        <span class="valor">4</span>
+                    </div>
+                    <div class="dato-reserva">
+                        <span class="descripcion">Valor diario</span>
+                        <span class="valor">$12.000</span>
+                    </div>
+                    <div class="dato-reserva">
+                        <span class="descripcion">Valor total</span>
+                        <span class="valor">$24.000</span>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="total-pagar">
+                Total a pagar: $44.000
+            </div>
+
+        </div>
+
         <div id ="listado_reservas">
         </div>
     </div>
+    <!-- <div class="tabla-container" id="tabla-container">    
+    </div> -->
     <div class="form-container">
             <h1>Ingrese sus datos</h1>
             <div class="formHead">
@@ -28,10 +109,10 @@
             <div id="formContainer" class="collapsed">
                 <div class="formDiv">
                     <input type="hidden" id="rut2">
-                    <input type="text" id="nombres" class="form-input">
-                    <input type="text" id="apellidos" class="form-input">
-                    <input type="text" id="telefono" maxlength="8" class="form-input">
-                    <input type="email" id="correo" class="form-input">
+                    <input type="text" id="nombres" class="form-input" placeholder="Ingrese su nombre">
+                    <input type="text" id="apellidos" class="form-input" placeholder="Ingrese sus apellidos">
+                    <input type="text" id="telefono" maxlength="8" class="form-input" placeholder="Ingrese su telefono">
+                    <input type="email" id="correo" class="form-input" placeholder="Ingrese su correo">
 
                     <button type="submit">Enviar</button>
                 </div>
